@@ -1,9 +1,22 @@
+
+
 <h1>Books</h1>
 
 
 <% @books.each do |book| %>
- <span><%= book.title %></span>
- <span><%= book.body %></span>
+ <span class=honbun><%= book.title %></span>
+ <span class=honbun><%= book.body %></span>
+
+ <span class=tag>
+  <%= link_to 'Show' ,book_path(book.id) %>
+ </span>
+ <span class=tag>
+  <%= link_to 'Edit' ,edit_book_path(book.id) %>
+  </span>
+ <span class=tag>
+  <%= link_to 'Destroy' ,destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %>
+  </span>
+ </br>
 
 <% end %>
 
