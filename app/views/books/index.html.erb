@@ -1,32 +1,46 @@
 <!--一覧ページ-->
 
-<h1>Books</h1>
+<table>
+ <h1>Books</h1>
 
+ <ul class="head">
+  <li class="he">title</li>
+  <li class="he">body</li>
+  <li class="he">command</li>
+ </ul>
 
+ <p>
 <% @books.each do |book| %>
- <span class=honbun><%= book.title %></span>
- <span class=honbun><%= book.body %></span>
+ <span class="title"><%= book.title %></span>
+ <span class="body"><%= book.body %></span>
 
- <span class=tag>
+ <span class ="tag">
   <%= link_to 'Show' ,book_path(book.id) %>
  </span>
- <span class=tag>
+ <span class ="tag">
   <%= link_to 'Edit' ,edit_book_path(book.id) %>
   </span>
- <span class=tag>
+ <span class ="tag">
   <%= link_to 'Destroy' ,destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %>
   </span>
  </br>
 
 <% end %>
 
-<!--ここから追加-->
+ </p>
+
+</table>
+
+
+<!--ここから新規投稿-->
+
+<form class="sinki">
 <h1>New book</h1>
 <% if @book.errors.any? %>
  <%= @book.errors.count %>errors prohibited this book from being saved:
- <ul>
+ <ul class="errors">
   <% @book.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
+   <li class="er"><%= message %></li>
    <% end %>
  </ul>
 <% end %>
@@ -43,3 +57,4 @@
 
  <%= f.submit 'Create Book' %>
 <% end %>
+</form>
